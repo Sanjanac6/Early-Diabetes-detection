@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diabetes Prediction App</title>
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-pink-100 flex items-center justify-center min-h-screen">
+
+    <div id="home-screen" class="text-center p-8 bg-white shadow-lg rounded-lg max-w-lg mx-auto border border-pink-300">
+        <h1 class="text-4xl font-bold text-pink-600 mb-6">Welcome to the Diabetes Prediction App</h1>
+        <button id="predict-btn" class="bg-pink-500 text-white px-6 py-3 rounded hover:bg-pink-600 transition duration-300 ease-in-out text-lg">
+            Start Prediction
+        </button>
+    </div>
+
+    <div id="form-screen" class="hidden p-8 bg-white shadow-lg rounded-lg max-w-lg mx-auto border border-pink-300">
+        <h2 class="text-2xl font-semibold text-pink-600 mb-6">Enter your details for prediction:</h2>
+        <form id="prediction-form" class="space-y-4">
+            <!-- Age -->
+            <div>
+                <label class="block text-sm font-medium text-pink-700">Age:</label>
+                <input type="number" name="age" id="age" required class="mt-1 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            </div>
+
+            <!-- Gender -->
+            <div>
+                <label class="block text-sm font-medium text-pink-700">Gender (0 for female, 1 for male):</label>
+                <input type="number" name="gender" id="gender" required class="mt-1 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            </div>
+
+            <!-- Polyuria -->
+            <div>
+                <label class="block text-sm font-medium text-pink-700">Polyuria (1 for yes, 0 for no):</label>
+                <input type="number" name="polyuria" id="polyuria" required class="mt-1 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            </div>
+
+            <!-- Polydipsia -->
+            <div>
+                <label class="block text-sm font-medium text-pink-700">Polydipsia (1 for yes, 0 for no):</label>
+                <input type="number" name="polydipsia" id="polydipsia" required class="mt-1 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            </div>
+
+            <!-- Blood Pressure -->
+            <div>
+                <label class="block text-sm font-medium text-pink-700">Blood Pressure:</label>
+                <input type="number" name="blood_pressure" id="blood_pressure" required class="mt-1 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            </div>
+
+            <!-- BMI -->
+            <div>
+                <label class="block text-sm font-medium text-pink-700">BMI:</label>
+                <input type="number" name="bmi" id="bmi" step="0.1" required class="mt-1 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            </div>
+
+            <!-- Glucose Tolerance -->
+            <div>
+                <label class="block text-sm font-medium text-pink-700">Glucose Tolerance:</label>
+                <input type="number" name="glucose_tolerance" id="glucose_tolerance" required class="mt-1 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            </div>
+
+            <!-- Skin Thickness -->
+            <div>
+                <label class="block text-sm font-medium text-pink-700">Skin Thickness:</label>
+                <input type="number" name="skin_thickness" id="skin_thickness" required class="mt-1 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            </div>
+
+            <!-- Insulin Level -->
+            <div>
+                <label class="block text-sm font-medium text-pink-700">Insulin Level:</label>
+                <input type="number" name="insulin" id="insulin" required class="mt-1 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            </div>
+
+            <!-- Diabetes Pedigree Function -->
+            <div>
+                <label class="block text-sm font-medium text-pink-700">Diabetes Pedigree Function:</label>
+                <input type="number" name="diabetes_pedigree" id="diabetes_pedigree" step="0.01" required class="mt-1 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="w-full bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 transition duration-300 ease-in-out">
+                Submit
+            </button>
+        </form>
+    </div>
+
+    <div id="result-screen" class="hidden p-8 bg-white shadow-lg rounded-lg max-w-lg mx-auto border border-pink-300">
+        <h2 class="text-2xl font-semibold text-pink-600 mb-4">Prediction Results</h2>
+        <p id="prediction" class="text-xl font-bold text-green-600 mb-2"></p>
+        <p id="probability" class="text-xl font-semibold text-pink-600 mb-4"></p>
+        <button id="home-btn" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition duration-300 ease-in-out">
+            Back to Home
+        </button>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
